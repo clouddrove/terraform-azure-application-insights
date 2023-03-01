@@ -1,0 +1,54 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name : Terraform AZURE App Insights
+
+# License of this project
+license: "APACHE"
+
+# Canonical GitHub repo
+github_repo: clouddrove/terraform-azure-app-insights
+
+# Badges to display
+badges:
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v1.1.7-green"
+    url: "https://www.terraform.io"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
+    url: "LICENSE.md"
+
+#  description of this project
+description: |-
+  Terraform module to create Azure App Insights resource on AZURE.
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+# How to use this project
+usage: |-
+  Here are some examples of how you can use this module in your inventory structure:
+  ### azure app insights
+  ```hcl
+    # Basic
+    module "app-insights" {
+  source                                               = "terraform/app-insights/azure"
+  version                                              = "1.0.0"
+  name                                                 = "app"
+  environment                                          = "test"
+  label_order                                          = ["name", "environment"]
+  enabled                                              = true
+  location                                             = module.resource_group.resource_group_location
+  resource_group_name                                  = module.resource_group.resource_group_name
+  #   workspace_id                                     = module.log-analytics.workspace_id
+  application_insights_config                          = "web"
+  }
+    ```
+
+
+

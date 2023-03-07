@@ -13,7 +13,7 @@ module "resource_group" {
 }
 
 module "application-insights" {
-  source = "../../"
+  source = "../"
 
   name                = "test-app"
   environment         = "test"

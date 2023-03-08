@@ -25,7 +25,7 @@ module "application-insights" {
   daily_data_cap_in_gb = 30
 
   ##web test
-  web_test_enable   = false
+  web_test_enable   = true
   kind              = "ping"
   frequency         = 300
   timeout           = 60

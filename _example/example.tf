@@ -23,4 +23,8 @@ module "application-insights" {
   resource_group_name = module.resource_group.resource_group_name
   #   workspace_id     = module.log-analytics.workspace_id
   application_insights_config = "web"
+
+  #### enable diagnostic setting
+  diagnostic_setting_enable  = false
+  log_analytics_workspace_id = ""
 }

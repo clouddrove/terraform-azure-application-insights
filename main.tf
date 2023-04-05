@@ -39,7 +39,7 @@ resource "azurerm_application_insights" "application_insights" {
   workspace_id                          = var.workspace_id
   local_authentication_disabled         = var.local_authentication_disabled
   internet_ingestion_enabled            = var.internet_ingestion_enabled
-  internet_query_enabled                = var.internet_query_enable
+  internet_query_enabled                = var.internet_query_enabled
   force_customer_storage_for_profiler   = var.force_customer_storage_for_profiler
   tags                                  = module.labels.tags
 }

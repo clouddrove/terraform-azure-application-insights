@@ -4,7 +4,7 @@ provider "azurerm" {
 
 module "resource_group" {
   source  = "clouddrove/resource-group/azure"
-  version = "1.0.0"
+  version = "1.0.2"
 
   name        = "rg-appi-test"
   environment = "test"
@@ -21,17 +21,13 @@ module "application-insights" {
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
   #   workspace_id     = module.log-analytics.workspace_id
-  application_type     = "web"
-  daily_data_cap_in_gb = 30
+  application_type = "web"
 
   ##web test
   web_test_enable   = true
   kind              = "ping"
   frequency         = 300
   timeout           = 60
-  monitored_enabled = true
-  retry_enabled     = true
-  geo_locations     = ["us-ca-sjc-azr", "us-tx-sn1-azr", "us-il-ch1-azr", "us-va-ash-azr", "us-fl-mia-edge"]
   list_of_test_urls = ["https://www.google.com", ]
   web_test_name     = ["google", ]
 }

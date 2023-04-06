@@ -87,7 +87,7 @@ variable "sampling_percentage" {
 
 variable "daily_data_cap_in_gb" {
   type        = number
-  default     = null
+  default     = 30
   description = "Specifies the Application Insights component daily data volume cap in GB."
 }
 
@@ -109,12 +109,7 @@ variable "timeout" {
 }
 variable "monitored_enabled" {
   type    = bool
-  default = false
-}
-variable "list_of_test_locations" {
-  type        = list(string)
-  default     = ["us-ca-sjc-azr", "us-tx-sn1-azr", "us-il-ch1-azr", "us-va-ash-azr", "us-fl-mia-edge"]
-  description = "List of Azure locations that will perform the specified web tests. Default is set to 5 US locations.  Microsoft recommendation is a minimum of 5 test locations with an alert threshold of N-2. Ref: https://docs.microsoft.com/en-us/azure/azure-monitor/app/monitor-web-app-availability"
+  default = true
 }
 variable "retry_enabled" {
   type        = bool
@@ -162,12 +157,12 @@ variable "local_authentication_disabled" {
 }
 variable "internet_ingestion_enabled" {
   type        = bool
-  default     = true
+  default     = false
   description = " (Optional) Should the Application Insights component support ingestion over the Public Internet? Defaults to true."
 }
-variable "internet_query_enable" {
+variable "internet_query_enabled" {
   type        = bool
-  default     = true
+  default     = false
   description = "(Optional) Should the Application Insights component support querying over the Public Internet? Defaults to true."
 }
 variable "force_customer_storage_for_profiler" {
@@ -181,7 +176,7 @@ variable "web_test_name" {
 }
 variable "geo_locations" {
   type        = list(string)
-  default     = []
+  default     = ["us-ca-sjc-azr", "us-tx-sn1-azr", "us-il-ch1-azr", "us-va-ash-azr", "us-fl-mia-edge"]
   description = "Specifies a list of where to physically run the tests from to give global coverage for accessibility of your application."
 }
 

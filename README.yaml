@@ -37,22 +37,27 @@ usage: |-
   ```hcl
     # Basic
     module "app-insights" {
-    source                                               = "terraform/app-insights/azure"
-    version                                              = "1.0.0"
-    name                                                 = "app"
-    environment                                          = "test"
-    label_order                                          = ["name", "environment"]
-    enabled                                              = true
-    location                                             = module.resource_group.resource_group_location
-    resource_group_name                                  = module.resource_group.resource_group_name
-    #   workspace_id                                     = module.log-analytics.workspace_id
-    application_insights_config                          = "web"
+    source                             = "terraform/app-insights/azure"
+    version                            = "1.0.0"
+    name                               = "app"
+    environment                        = "test"
+    label_order                        = ["name", "environment", ]
+    resource_group_name                = module.resource_group.resource_group_name
+    location                           = module.resource_group.resource_group_location
+    #   workspace_id                   = module.log-analytics.workspace_id
+    application_type = "web"
+
+    ##web test
+    web_test_enable   = true
+    kind              = "ping"
+    frequency         = 300
+    timeout           = 60
+    list_of_test_urls = ["https://www.google.com", ]
+    web_test_name     = ["google", ]
 
     #### enable diagnostic setting
-    diagnostic_setting_enable  = false
-    log_analytics_workspace_id = ""
+    log_analytics_workspace_id        = module.log-analytics.workspace_id
   }
     ```
-
 
 

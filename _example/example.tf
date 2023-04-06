@@ -21,7 +21,7 @@ module "application-insights" {
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
   #   workspace_id     = module.log-analytics.workspace_id
-  application_type     = "web"
+  application_type = "web"
 
   ##web test
   web_test_enable   = true

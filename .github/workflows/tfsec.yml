@@ -1,13 +1,11 @@
-name: changelog
+name: tfsec
 permissions: write-all
 on:
-  push:
-    tags:
-      - "*"
+  pull_request:
   workflow_dispatch:
 jobs:
-  changelog:
-    uses: clouddrove/github-shared-workflows/.github/workflows/changelog.yml@master
+  tfsec:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tfsec.yml@master
     secrets: inherit
     with:
-      branch: 'master'
+      working_directory: '.'

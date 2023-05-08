@@ -28,8 +28,7 @@ module "log-analytics" {
 }
 
 module "application-insights" {
-  source = "../"
-
+  source              = "clouddrove/application-insights/azure"
   name                = "app"
   environment         = "test"
   label_order         = ["name", "environment", ]

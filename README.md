@@ -77,7 +77,6 @@ Here are some examples of how you can use this module in your inventory structur
   version                            = "1.0.0"
   name                               = "app"
   environment                        = "test"
-  label_order                        = ["name", "environment", ]
   resource_group_name                = module.resource_group.resource_group_name
   location                           = module.resource_group.resource_group_location
   #   workspace_id                   = module.log-analytics.workspace_id
@@ -107,7 +106,7 @@ Here are some examples of how you can use this module in your inventory structur
 |------|-------------|------|---------|:--------:|
 | Metric\_enable | Is this Diagnostic Metric enabled? Defaults to true. | `bool` | `true` | no |
 | application\_insights\_config | Specifies the type of Application Insights to create. Valid values are ios for iOS, java for Java web, MobileCenter for App Center, Node.JS for Node.js, other for General, phone for Windows Phone, store for Windows Store and web for ASP.NET. Please note these values are case sensitive; unmatched values are treated as ASP.NET by Azure. Changing this forces a new resource to be created. | `string` | `"web"` | no |
-| application\_type | Required) Specifies the type of Application Insights to create. Valid values are ios for iOS, java for Java web, MobileCenter for App Center, Node.JS for Node.js, other for General, phone for Windows Phone, store for Windows Store and web for ASP.NET. Please note these values are case sensitive; unmatched values are treated as ASP.NET by Azure. Changing this forces a new resource to be created. | `string` | `""` | no |
+| application\_type | Required) Specifies the type of Application Insights to create. Valid values are ios for iOS, java for Java web, MobileCenter for App Center, Node.JS for Node.js, other for General, phone for Windows Phone, store for Windows Store and web for ASP.NET. Please note these values are case sensitive; unmatched values are treated as ASP.NET by Azure. Changing this forces a new resource to be created. | `string` | `"web"` | no |
 | attributes | Additional attributes (e.g. `1`). | `list(string)` | `[]` | no |
 | business\_unit | Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element. | `string` | `"Corp"` | no |
 | category | The name of a Diagnostic Log Category Group for this Resource. | `string` | `null` | no |
@@ -130,7 +129,7 @@ Here are some examples of how you can use this module in your inventory structur
 | internet\_ingestion\_enabled | (Optional) Should the Application Insights component support ingestion over the Public Internet? Defaults to true. | `bool` | `false` | no |
 | internet\_query\_enabled | (Optional) Should the Application Insights component support querying over the Public Internet? Defaults to true. | `bool` | `false` | no |
 | kind | n/a | `string` | `""` | no |
-| label\_order | Label order, e.g. sequence of application name and environment `name`,`environment`,'attribute' [`webserver`,`qa`,`devops`,`public`,] . | `list(any)` | `[]` | no |
+| label\_order | Label order, e.g. sequence of application name and environment `name`,`environment`,'attribute' [`webserver`,`qa`,`devops`,`public`,] . | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
 | list\_of\_test\_urls | List of URLs to put in the availability tests.  Example: ["https://test1.example.com", "https://test2.example.com/app"] | `list(string)` | `[]` | no |
 | local\_authentication\_disabled | (Optional) Disable Non-Azure AD based Auth. Defaults to false. | `bool` | `false` | no |
 | location | (Required) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. | `string` | `""` | no |

@@ -21,7 +21,7 @@ module "log-analytics" {
   create_log_analytics_workspace   = true
   log_analytics_workspace_sku      = "PerGB2018"
   resource_group_name              = module.resource_group.resource_group_name
-  log_analytics_workspace_location = module.resource_group.resource_group_locationcation
+  log_analytics_workspace_location = module.resource_group.resource_group_location
 }
 
 module "application-insights" {

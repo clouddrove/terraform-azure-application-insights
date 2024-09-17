@@ -237,11 +237,7 @@ variable "category" {
   default     = null
   description = " The name of a Diagnostic Log Category Group for this Resource."
 }
-variable "log_enabled" {
-  type        = string
-  default     = true
-  description = " Is this Diagnostic Log enabled? Defaults to true."
-}
+
 variable "storage_account_id" {
   type        = string
   default     = null

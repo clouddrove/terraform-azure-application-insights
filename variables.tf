@@ -18,12 +18,6 @@ variable "repository" {
   description = "Terraform current module repo"
 }
 
-variable "business_unit" {
-  type        = string
-  default     = "Corp"
-  description = "Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element."
-}
-
 variable "label_order" {
   type        = list(any)
   default     = ["name", "environment"]
@@ -42,22 +36,11 @@ variable "attributes" {
   description = "Additional attributes (e.g. `1`)."
 }
 
-variable "extra_tags" {
-  type        = map(string)
-  default     = {}
-  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
-}
-
 variable "resource_group_name" {
   type        = string
   description = "The name of the resource group in which to create the network security group."
 }
 
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "A mapping of tags to assign to the resource."
-}
 
 variable "enabled" {
   type        = bool
@@ -106,6 +89,7 @@ variable "frequency" {
 }
 variable "timeout" {
   default     = 30
+  type        = number
   description = "Seconds until this WebTest will timeout and fail. Default is 30."
 }
 variable "monitored_enabled" {
@@ -152,11 +136,6 @@ variable "workspace_id" {
   type        = string
   default     = null
   description = "(Optional) Specifies the id of a log analytics workspace resource. Changing this forces a new resource to be created."
-}
-variable "application_insights_config" {
-  type        = string
-  default     = "web"
-  description = "Specifies the type of Application Insights to create. Valid values are ios for iOS, java for Java web, MobileCenter for App Center, Node.JS for Node.js, other for General, phone for Windows Phone, store for Windows Store and web for ASP.NET. Please note these values are case sensitive; unmatched values are treated as ASP.NET by Azure. Changing this forces a new resource to be created."
 }
 
 variable "local_authentication_disabled" {

@@ -27,7 +27,7 @@ module "log-analytics" {
 }
 
 module "application-insights" {
-  source              = "clouddrove/application-insights/azure"
+  source              = "./.."
   name                = "app"
   environment         = "test"
   resource_group_name = module.resource_group.resource_group_name

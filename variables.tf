@@ -30,12 +30,6 @@ variable "managedby" {
   description = "ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'."
 }
 
-variable "attributes" {
-  type        = list(string)
-  default     = []
-  description = "Additional attributes (e.g. `1`)."
-}
-
 variable "resource_group_name" {
   type        = string
   description = "The name of the resource group in which to create the network security group."
@@ -191,11 +185,6 @@ variable "log_analytics_destination_type" {
   description = "Possible values are AzureDiagnostics and Dedicated, default to AzureDiagnostics. When set to Dedicated, logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table."
 }
 
-variable "diagnostic_log_days" {
-  type        = number
-  default     = "90"
-  description = " The number of days for which this Retention Policy should apply."
-}
 variable "Metric_enable" {
   type        = bool
   default     = true

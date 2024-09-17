@@ -129,7 +129,7 @@ variable "test_body" {
 }
 variable "parse_deps" {
   default     = "false"
-  type        =  bool
+  type        = bool
   description = "Retrieve resources that are linked to by the test URL as part of the web test. Valid values are \"True\" or \"False\". Default value is \"False\"."
 }
 

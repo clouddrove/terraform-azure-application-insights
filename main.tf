@@ -60,7 +60,7 @@ resource "azurerm_application_insights_web_test" "main" {
 
   configuration = format("%s%s%s",
     local.test_header,
-    join("", formatlist(local.replace_body, random_uuid.test_guids[count.index].result, random_uuid.test_guids[count.index].keepers.url)),
+    join("", formatlist(local.replace_body, random_uuid.test_guids.*.result[*], random_uuid.test_guids.*.keepers.url[*])),
   local.footer)
 
   lifecycle {

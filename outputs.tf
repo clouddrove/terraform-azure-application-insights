@@ -16,4 +16,4 @@ output "instrumentation_key" {
 output "connection_string" {
   value       = join("", azurerm_application_insights.application_insights.*.connection_string)
   description = "The Connection String for this Application Insights component. (Sensitive)"
-}  
+}

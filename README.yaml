@@ -58,5 +58,3 @@ usage: |-
     log_analytics_workspace_id        = module.log-analytics.workspace_id
   }
     ```
-
-

@@ -42,7 +42,6 @@ variable "enabled" {
   default     = true
 }
 
-
 variable "application_type" {
   type        = string
   default     = "web"

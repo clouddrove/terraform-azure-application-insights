@@ -44,13 +44,12 @@ resource "azurerm_application_insights" "application_insights" {
   tags                                  = module.labels.tags
 }
 
-
 resource "azurerm_application_insights_web_test" "main" {
   count                   = var.enabled && var.web_test_enable ? length(var.list_of_test_urls) : 0
   name                    = element(var.web_test_name, count.index)
-  location                = join("", azurerm_application_insights.application_insights.*.location)
+  location                = azurerm_application_insights.application_insights[0].location
   resource_group_name     = var.resource_group_name
-  application_insights_id = join("", azurerm_application_insights.application_insights.*.id)
+  application_insights_id = azurerm_application_insights.application_insights[0].id
   kind                    = var.kind
   frequency               = var.frequency
   timeout                 = var.timeout
@@ -61,43 +60,38 @@ resource "azurerm_application_insights_web_test" "main" {
 
   configuration = format("%s%s%s",
     local.test_header,
-    join("", formatlist(local.replace_body, random_uuid.test_guids.*.result[count.index], random_uuid.test_guids.*.keepers.url[count.index])),
-  local.footer)
+    join("", formatlist(local.replace_body, random_uuid.test_guids[*].result, random_uuid.test_guids[*].keepers.url)),
+    local.footer
+  )
+
 
   lifecycle {
     ignore_changes = [
       tags,
     ]
   }
-
 }
 
 resource "azurerm_monitor_diagnostic_setting" "main" {
   count                          = var.enabled && var.diagnostic_setting_enable ? 1 : 0
   name                           = format("%s-application-insights-diagnostic-log", module.labels.id)
-  target_resource_id             = join("", azurerm_application_insights.application_insights.*.id)
+  target_resource_id             = azurerm_application_insights.application_insights[0].id
   storage_account_id             = var.storage_account_id
   eventhub_name                  = var.eventhub_name
   eventhub_authorization_rule_id = var.eventhub_authorization_rule_id
   log_analytics_workspace_id     = var.log_analytics_workspace_id
   log_analytics_destination_type = var.log_analytics_destination_type
+
   metric {
     category = "AllMetrics"
     enabled  = var.Metric_enable
-    retention_policy {
-      enabled = var.retention_policy_enabled
-      days    = var.diagnostic_log_days
-    }
   }
-  log {
+
+  enabled_log {
     category       = var.category
     category_group = "AllLogs"
-    retention_policy {
-      enabled = var.retention_policy_enabled
-      days    = var.diagnostic_log_days
-    }
-    enabled = var.log_enabled
   }
+
   lifecycle {
     ignore_changes = [log_analytics_destination_type]
   }

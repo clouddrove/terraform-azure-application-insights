@@ -18,12 +18,6 @@ variable "repository" {
   description = "Terraform current module repo"
 }
 
-variable "business_unit" {
-  type        = string
-  default     = "Corp"
-  description = "Top-level division of your company that owns the subscription or workload that the resource belongs to. In smaller organizations, this tag might represent a single corporate or shared top-level organizational element."
-}
-
 variable "label_order" {
   type        = list(any)
   default     = ["name", "environment"]
@@ -36,35 +30,17 @@ variable "managedby" {
   description = "ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'."
 }
 
-variable "attributes" {
-  type        = list(string)
-  default     = []
-  description = "Additional attributes (e.g. `1`)."
-}
-
-variable "extra_tags" {
-  type        = map(string)
-  default     = {}
-  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
-}
-
 variable "resource_group_name" {
   type        = string
   description = "The name of the resource group in which to create the network security group."
 }
 
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "A mapping of tags to assign to the resource."
-}
 
 variable "enabled" {
   type        = bool
   description = "Set to false to prevent the module from creating any resources."
   default     = true
 }
-
 
 variable "application_type" {
   type        = string
@@ -101,10 +77,12 @@ variable "kind" {
 }
 variable "frequency" {
   default     = 300
+  type        = number
   description = "Interval in seconds between test runs for this WebTest. Default is 300."
 }
 variable "timeout" {
   default     = 30
+  type        = number
   description = "Seconds until this WebTest will timeout and fail. Default is 30."
 }
 variable "monitored_enabled" {
@@ -124,9 +102,11 @@ variable "description" {
 variable "test_body" {
   default     = "<Request Method=\"GET\" Guid=\"%s\" Version=\"1.1\" Url=\"%s\" ThinkTime=\"0\" Timeout=\"300\" ParseDependentRequests=\"PARSEDEPS\" FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"True\" ResponseTimeGoal=\"0\" Encoding=\"utf-8\" ExpectedHttpStatusCode=\"200\" ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />"
   description = "WebTest XML Request body.  If overridden, make sure to retain all the string format() parameters needed by the local variable calculations."
+  type        = string
 }
 variable "parse_deps" {
   default     = "false"
+  type        = bool
   description = "Retrieve resources that are linked to by the test URL as part of the web test. Valid values are \"True\" or \"False\". Default value is \"False\"."
 }
 
@@ -149,11 +129,6 @@ variable "workspace_id" {
   type        = string
   default     = null
   description = "(Optional) Specifies the id of a log analytics workspace resource. Changing this forces a new resource to be created."
-}
-variable "application_insights_config" {
-  type        = string
-  default     = "web"
-  description = "Specifies the type of Application Insights to create. Valid values are ios for iOS, java for Java web, MobileCenter for App Center, Node.JS for Node.js, other for General, phone for Windows Phone, store for Windows Store and web for ASP.NET. Please note these values are case sensitive; unmatched values are treated as ASP.NET by Azure. Changing this forces a new resource to be created."
 }
 
 variable "local_authentication_disabled" {
@@ -208,16 +183,7 @@ variable "log_analytics_destination_type" {
   default     = "AzureDiagnostics"
   description = "Possible values are AzureDiagnostics and Dedicated, default to AzureDiagnostics. When set to Dedicated, logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table."
 }
-variable "retention_policy_enabled" {
-  type        = bool
-  default     = false
-  description = "Is this Retention Policy enabled?"
-}
-variable "diagnostic_log_days" {
-  type        = number
-  default     = "90"
-  description = " The number of days for which this Retention Policy should apply."
-}
+
 variable "Metric_enable" {
   type        = bool
   default     = true
@@ -237,11 +203,7 @@ variable "category" {
   default     = null
   description = " The name of a Diagnostic Log Category Group for this Resource."
 }
-variable "log_enabled" {
-  type        = string
-  default     = true
-  description = " Is this Diagnostic Log enabled? Defaults to true."
-}
+
 variable "storage_account_id" {
   type        = string
   default     = null

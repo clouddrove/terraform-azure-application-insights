@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-08-29
+### :sparkles: New Features
+- [`f450834`](https://github.com/clouddrove/terraform-azure-application-insights/commit/f450834bc48252c5a6023b01c8001330fa51cbde) - auto changelog action added *(PR [#8](https://github.com/clouddrove/terraform-azure-application-insights/pull/8) by [@themaheshyadav](https://github.com/themaheshyadav))*
+
+### :bug: Bug Fixes
+- [`ef39966`](https://github.com/clouddrove/terraform-azure-application-insights/commit/ef39966e9fad68e3bde6d582004611562dab628e) - add default value in variable.tf *(commit by [@themaheshyadav](https://github.com/themaheshyadav))*
+- [`44b80ca`](https://github.com/clouddrove/terraform-azure-application-insights/commit/44b80cacc7be8c68ac471ffd960532cbd48b2566) - add default value in variable.tf *(commit by [@themaheshyadav](https://github.com/themaheshyadav))*
+
+### :construction_worker: Build System
+- [`4124272`](https://github.com/clouddrove/terraform-azure-application-insights/commit/41242725228a03b9bf1a783c8195f9a5b7e556f1) - Add tfsec workflow *(PR [#10](https://github.com/clouddrove/terraform-azure-application-insights/pull/10))*
+
+
 ## [1.0.2] - 2023-03-08
 ### :sparkles: New Features
 - [`a4574f0`](https://github.com/clouddrove/terraform-azure-application-insights/commit/a4574f0fd2d8bdc17b4ddb355088a51da34cda43) - Added application insights web test resource
@@ -23,3 +35,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.0]: https://github.com/clouddrove/terraform-azure-application-insights/compare/1.0.0...master
 [1.0.1]: https://github.com/clouddrove/terraform-azure-application-insights/compare/1.0.0...1.0.1
 [1.0.2]: https://github.com/clouddrove/terraform-azure-application-insights/compare/1.0.1...1.0.2
+[1.1.0]: https://github.com/clouddrove/terraform-azure-application-insights/compare/1.0.2...1.1.0
